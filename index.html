@@ -30,103 +30,18 @@
       border: none;
       display: block;
     }
-
-    /* Floating Zoom Controls */
-    .zoom-container {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 999999;
-      display: flex;
-      gap: 6px;
-      background: rgba(15, 23, 42, 0.95);
-      padding: 6px 10px;
-      border-radius: 25px;
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.6);
-      -webkit-tap-highlight-color: transparent;
-    }
-    .zoom-btn {
-      background: #2563eb;
-      color: #ffffff;
-      border: none;
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      font-size: 18px;
-      font-weight: bold;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      user-select: none;
-      -webkit-user-select: none;
-      touch-action: manipulation;
-    }
-    .zoom-btn:active {
-      background: #1d4ed8;
-      transform: scale(0.95);
-    }
-    .reset-btn {
-      width: auto;
-      padding: 0 10px;
-      border-radius: 15px;
-      font-size: 12px;
-    }
+    /* Zoom controls are removed */
   </style>
 </head>
 <body>
 
-  <!-- Floating Zoom Buttons (+, 100%, -) -->
-  <div class="zoom-container">
-    <button class="zoom-btn" onclick="zoomIn()" title="Zoom In">+</button>
-    <button class="zoom-btn reset-btn" id="zoomLabel" onclick="resetZoom()" title="Reset">100%</button>
-    <button class="zoom-btn" onclick="zoomOut()" title="Zoom Out">−</button>
-  </div>
-
-  <!-- Portal Container jisme aapka link khulega -->
+  <!-- Portal Container (Zoom buttons are removed here) -->
   <div class="portal-container" id="portalContainer">
     <iframe id="portalFrame" src="https://script.google.com/macros/s/AKfycbwkDN83M9-ZQ1XJqeYOOuOS0xTaUBaeaDhWuZu4FdtZZOY946j-1Ja6X6vnzGjwxgAo/exec"></iframe>
   </div>
 
   <script>
-    let currentZoom = 1;
-    const frame = document.getElementById('portalFrame');
-    const zoomLabel = document.getElementById('zoomLabel');
-
-    function applyZoom() {
-      try {
-        frame.contentWindow.postMessage({ type: 'SET_ZOOM', zoom: currentZoom }, '*');
-      } catch (e) {
-        console.log(e);
-      }
-
-      frame.style.width = `${100 / currentZoom}%`;
-      frame.style.height = `${100 / currentZoom}%`;
-      frame.style.transform = `scale(${currentZoom})`;
-      frame.style.transformOrigin = '0 0';
-
-      zoomLabel.innerText = `${Math.round(currentZoom * 100)}%`;
-    }
-
-    function zoomIn() {
-      if (currentZoom < 1.30) {
-        currentZoom += 0.10;
-        applyZoom();
-      }
-    }
-
-    function zoomOut() {
-      if (currentZoom > 0.50) {
-        currentZoom -= 0.10;
-        applyZoom();
-      }
-    }
-
-    function resetZoom() {
-      currentZoom = 1;
-      applyZoom();
-    }
+    // Script for zoom is also removed
   </script>
 
 </body>
