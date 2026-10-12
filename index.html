@@ -3,6 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  
+  <!-- Security Headers: Script Injection aur Cross-Site Attacks ko rokne ke liye -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://script.google.com https://*.google.com https://*.googleusercontent.com; frame-src https://script.google.com https://*.google.com; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline';">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+
   <title>Employee Portal</title>
   <style>
     * {
@@ -30,19 +36,21 @@
       border: none;
       display: block;
     }
-    /* Zoom controls are removed */
   </style>
 </head>
 <body>
 
-  <!-- Portal Container (Zoom buttons are removed here) -->
   <div class="portal-container" id="portalContainer">
-    <iframe id="portalFrame" src="https://script.google.com/macros/s/AKfycbzJrPL53dxNYpNpJlLj7WSs2q5tolljyzgaLHJ7fGMKToH3EQG0F6SAD_hyDd1vO0SZ/exec"></iframe>
+    <!-- Sandbox & Security Attributes: Phishing aur unauthorized redirects se bachane ke liye -->
+    <iframe 
+      id="portalFrame" 
+      src="https://script.google.com/macros/s/AKfycbzoehP-cWj9OtCOZg6BL6Lo5UWaW3mNYvwdjfSqsyXtZSPPX8mMm-OhgHQOTmH1VHe1Jw/exec"
+      sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-downloads"
+      loading="lazy"
+      referrerpolicy="strict-origin-when-cross-origin"
+      title="Employee Onboarding Portal">
+    </iframe>
   </div>
-
-  <script>
-    // Script for zoom is also removed
-  </script>
 
 </body>
 </html>
